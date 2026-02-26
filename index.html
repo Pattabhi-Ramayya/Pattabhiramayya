@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pattabhi Ramayya Yalla</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --cream: #F5F0E8;
+  --warm: #EDE5D0;
+  --ink: #1A1208;
+  --orange: #E8501A;
+  --yellow: #F5C842;
+  --green: #1D6B3C;
+  --blue: #1A3A8F;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--ink); font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+
+/* TICKER */
+.ticker { background: var(--orange); padding: 10px 0; overflow: hidden; }
+.ticker-inner { display: flex; animation: ticker 20s linear infinite; white-space: nowrap; }
+.ticker-item {
+  font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.15em;
+  color: #fff; padding: 0 32px; display: flex; align-items: center; gap: 16px;
+}
+.ticker-item::after { content: '✦'; color: var(--yellow); }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--ink);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 40px; border-bottom: 3px solid var(--orange);
+}
+.nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.1em; color: var(--yellow); }
+.nav-links { display: flex; }
+.nav-links a {
+  display: block; padding: 8px 20px; color: var(--cream); text-decoration: none;
+  font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+  border-left: 1px solid rgba(255,255,255,0.1); transition: all 0.2s;
+}
+.nav-links a:hover { background: var(--orange); color: #fff; }
+
+/* HERO */
+.hero { display: grid; grid-template-columns: 1fr 420px; min-height: 92vh; border-bottom: 3px solid var(--ink); }
+.hero-left {
+  padding: 60px 48px; display: flex; flex-direction: column; justify-content: space-between;
+  border-right: 3px solid var(--ink); position: relative; background: var(--cream); overflow: hidden;
+}
+.hero-left::before {
+  content: 'AI'; position: absolute; bottom: -20px; left: -10px;
+  font-family: 'Bebas Neue', sans-serif; font-size: 28vw; line-height: 1;
+  color: rgba(26,18,8,0.04); pointer-events: none;
+}
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); font-weight: 500;
+}
+.hero-eyebrow::before { content: '→'; font-size: 1rem; }
+.hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(5rem, 11vw, 11rem); line-height: 0.88; letter-spacing: 0.01em; }
+.hero-name .stroke { -webkit-text-stroke: 3px var(--ink); color: transparent; }
+.hero-name .filled { color: var(--ink); }
+.hero-name .highlight { color: var(--orange); display: block; }
+.hero-bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; }
+.hero-desc { max-width: 400px; font-size: 0.9rem; line-height: 1.8; color: rgba(26,18,8,0.65); }
+.hero-cta { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+.btn-hero {
+  display: inline-block; padding: 14px 28px;
+  font-family: 'Space Grotesk', sans-serif; font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+  transition: all 0.2s; border: 2.5px solid var(--ink);
+}
+.btn-hero.filled { background: var(--ink); color: var(--cream); }
+.btn-hero.filled:hover { background: var(--orange); border-color: var(--orange); }
+.btn-hero.outline { background: transparent; color: var(--ink); }
+.btn-hero.outline:hover { background: var(--yellow); }
+
+.hero-right { background: var(--ink); padding: 48px 36px; display: flex; flex-direction: column; justify-content: space-between; }
+.hero-right-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,232,0.4); margin-bottom: 32px; }
+.stat-block { margin-bottom: 36px; }
+.stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 5rem; line-height: 1; color: var(--yellow); }
+.stat-unit { font-size: 1.5rem; color: var(--orange); }
+.stat-desc { font-size: 0.78rem; color: rgba(245,240,232,0.55); margin-top: 4px; line-height: 1.5; }
+.hero-card { background: var(--orange); padding: 28px; }
+.hero-card-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.05em; color: #fff; margin-bottom: 4px; }
+.hero-card-role { font-size: 0.72rem; color: rgba(255,255,255,0.75); letter-spacing: 0.1em; }
+.hero-card-divider { height: 1px; background: rgba(255,255,255,0.2); margin: 16px 0; }
+.hero-card-detail { display: flex; flex-direction: column; gap: 8px; }
+.hero-card-row { display: flex; justify-content: space-between; font-size: 0.7rem; color: rgba(255,255,255,0.85); }
+.hero-card-row strong { color: #fff; }
+
+/* SECTION HEADERS */
+.section-header {
+  display: flex; align-items: center; padding: 20px 40px;
+  border-bottom: 2px solid var(--ink); background: var(--ink); gap: 20px;
+}
+.section-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.1em; color: var(--orange); }
+.section-title-bar { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.08em; color: var(--cream); }
+.section-line { flex: 1; height: 1px; background: rgba(255,255,255,0.12); }
+.section-tag { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.4); }
+
+/* ABOUT */
+.about-wrap { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 3px solid var(--ink); }
+.about-text-col { padding: 60px 48px; border-right: 3px solid var(--ink); }
+.about-big-text { font-family: 'Instrument Serif', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); line-height: 1.35; color: var(--ink); margin-bottom: 32px; }
+.about-big-text em { color: var(--orange); font-style: italic; }
+.about-body { font-size: 0.88rem; line-height: 1.9; color: rgba(26,18,8,0.65); }
+.skills-col { padding: 60px 48px; background: var(--warm); }
+.skills-col h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.08em; color: var(--ink); margin-bottom: 28px; }
+.skill-row { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid rgba(26,18,8,0.12); }
+.skill-row:last-child { border-bottom: none; }
+.skill-name { font-weight: 600; font-size: 0.85rem; }
+.skill-bar-wrap { width: 120px; height: 4px; background: rgba(26,18,8,0.12); }
+.skill-bar { height: 100%; background: var(--orange); }
+.skill-lvl { font-size: 0.7rem; color: var(--orange); font-weight: 600; letter-spacing: 0.08em; }
+
+/* INTERNSHIPS */
+.interns-wrap { border-bottom: 3px solid var(--ink); }
+.intern-row {
+  display: grid; grid-template-columns: 80px 260px 1fr 180px;
+  align-items: center; padding: 28px 40px; border-bottom: 2px solid var(--ink);
+  gap: 24px; background: var(--cream); transition: background 0.25s; position: relative; overflow: hidden;
+}
+.intern-row::after {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 0;
+  background: var(--yellow); transition: width 0.3s ease; z-index: 0;
+}
+.intern-row:hover::after { width: 100%; }
+.intern-row > * { position: relative; z-index: 1; }
+.intern-row:last-child { border-bottom: none; }
+.intern-index { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; color: rgba(26,18,8,0.15); line-height: 1; }
+.intern-company { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.05em; color: var(--ink); }
+.intern-role { font-size: 0.82rem; color: rgba(26,18,8,0.55); margin-top: 4px; }
+.intern-desc { font-size: 0.8rem; line-height: 1.7; color: rgba(26,18,8,0.6); }
+.intern-tag {
+  justify-self: end; display: inline-block; padding: 8px 16px;
+  font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600;
+  border: 2px solid var(--ink);
+}
+.intern-row:nth-child(odd) .intern-tag { background: var(--ink); color: var(--cream); }
+.intern-row:nth-child(even) .intern-tag { background: var(--orange); color: #fff; border-color: var(--orange); }
+
+/* CERTS */
+.certs-wrap { display: grid; grid-template-columns: repeat(5, 1fr); border-bottom: 3px solid var(--ink); }
+.cert-card {
+  padding: 40px 28px; border-right: 2px solid var(--ink);
+  position: relative; transition: background 0.25s; background: var(--cream);
+}
+.cert-card:last-child { border-right: none; }
+.cert-card:hover { background: var(--orange); }
+.cert-card:hover .cert-title, .cert-card:hover .cert-by { color: #fff; }
+.cert-card:hover .cert-num { color: rgba(255,255,255,0.1); }
+.cert-num { font-family: 'Bebas Neue', sans-serif; font-size: 4rem; line-height: 1; color: rgba(26,18,8,0.06); margin-bottom: 20px; }
+.cert-title { font-family: 'Instrument Serif', serif; font-size: 1rem; line-height: 1.45; color: var(--ink); margin-bottom: 12px; transition: color 0.25s; }
+.cert-by { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(26,18,8,0.45); font-weight: 500; transition: color 0.25s; }
+.cert-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green); position: absolute; top: 28px; right: 28px; }
+.cert-card:hover .cert-dot { background: #fff; }
+
+/* EDUCATION */
+.edu-wrap { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 3px solid var(--ink); }
+.edu-card { padding: 56px 48px; border-right: 3px solid var(--ink); position: relative; }
+.edu-card:last-child { border-right: none; background: var(--warm); }
+.edu-card::before {
+  content: attr(data-year); position: absolute; bottom: 20px; right: 24px;
+  font-family: 'Bebas Neue', sans-serif; font-size: 6rem; color: rgba(26,18,8,0.05); line-height: 1;
+}
+.edu-badge { display: inline-block; padding: 6px 14px; background: var(--blue); color: #fff; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; margin-bottom: 24px; }
+.edu-degree { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; letter-spacing: 0.03em; line-height: 1.1; color: var(--ink); margin-bottom: 12px; }
+.edu-school { font-size: 0.85rem; color: rgba(26,18,8,0.6); line-height: 1.6; margin-bottom: 20px; }
+.edu-years { font-size: 0.78rem; font-weight: 600; color: var(--orange); letter-spacing: 0.06em; }
+
+/* CONTACT */
+.contact-wrap { display: grid; grid-template-columns: 1fr 400px; }
+.contact-left { padding: 72px 48px; border-right: 3px solid var(--ink); }
+.contact-headline { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 8vw, 8rem); line-height: 0.9; letter-spacing: 0.01em; color: var(--ink); margin-bottom: 40px; }
+.contact-headline span { color: var(--orange); }
+.contact-sub { font-size: 0.88rem; line-height: 1.8; color: rgba(26,18,8,0.6); max-width: 480px; margin-bottom: 40px; }
+.contact-email-big { font-family: 'Instrument Serif', serif; font-size: clamp(1rem, 2vw, 1.4rem); color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--orange); padding-bottom: 4px; transition: color 0.2s; }
+.contact-email-big:hover { color: var(--orange); }
+.contact-right { background: var(--ink); padding: 48px 36px; display: flex; flex-direction: column; justify-content: space-between; }
+.contact-right h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.08em; color: var(--yellow); margin-bottom: 24px; }
+.contact-item { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.contact-item:last-child { border-bottom: none; }
+.contact-item-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.3); margin-bottom: 6px; }
+.contact-item-val { font-size: 0.82rem; color: var(--cream); }
+.contact-item-val a { color: var(--yellow); text-decoration: none; }
+.contact-item-val a:hover { color: var(--orange); }
+
+/* FOOTER */
+footer {
+  background: var(--ink); padding: 24px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 3px solid var(--orange);
+}
+.footer-left { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.1em; color: var(--yellow); }
+.footer-right { font-size: 0.7rem; color: rgba(245,240,232,0.35); letter-spacing: 0.08em; }
+
+/* REVEAL */
+.fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-in.show { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .about-wrap, .edu-wrap, .contact-wrap { grid-template-columns: 1fr; }
+  .about-text-col, .edu-card, .contact-left { border-right: none; border-bottom: 3px solid var(--ink); }
+  .certs-wrap { grid-template-columns: 1fr 1fr; }
+  .intern-row { grid-template-columns: 60px 1fr; }
+  .intern-desc, .intern-tag { display: none; }
+  nav { padding: 14px 20px; }
+  .nav-links a { padding: 8px 10px; font-size: 0.68rem; }
+  .hero-left, .about-text-col, .skills-col, .contact-left { padding: 40px 24px; }
+  section { padding: 40px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <div class="ticker-item">Pattabhi Ramayya Yalla</div>
+    <div class="ticker-item">AI & Cloud Engineer</div>
+    <div class="ticker-item">Cybersecurity</div>
+    <div class="ticker-item">Generative AI</div>
+    <div class="ticker-item">AWS Certified</div>
+    <div class="ticker-item">Process Mining</div>
+    <div class="ticker-item">B.Tech CSE 2027</div>
+    <div class="ticker-item">Pattabhi Ramayya Yalla</div>
+    <div class="ticker-item">AI & Cloud Engineer</div>
+    <div class="ticker-item">Cybersecurity</div>
+    <div class="ticker-item">Generative AI</div>
+    <div class="ticker-item">AWS Certified</div>
+    <div class="ticker-item">Process Mining</div>
+    <div class="ticker-item">B.Tech CSE 2027</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">PRY.DEV</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#internships">Experience</a>
+    <a href="#certifications">Certs</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">CS Student · AI Explorer · Based in Andhra Pradesh</div>
+    <div>
+      <div class="hero-name">
+        <span class="filled">PATTABHI</span><br>
+        <span class="stroke">RAMAYYA</span><br>
+        <span class="highlight">YALLA</span>
+      </div>
+    </div>
+    <div class="hero-bottom">
+      <p class="hero-desc">Building at the intersection of AI, Cloud, and Cybersecurity. 6+ virtual internships. 5 certifications. Graduating 2027.</p>
+      <div class="hero-cta">
+        <a href="mailto:pattabhiramayya503@gmail.com" class="btn-hero filled">✉ Get In Touch</a>
+        <a href="https://www.linkedin.com/in/pattabhiramayya-yalla-93508537a" target="_blank" class="btn-hero outline">LinkedIn ↗</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div>
+      <div class="hero-right-label">// Quick Stats</div>
+      <div class="stat-block">
+        <div class="stat-number">06<span class="stat-unit">+</span></div>
+        <div class="stat-desc">Virtual Internships across<br>global organizations</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">05</div>
+        <div class="stat-desc">Industry Certifications<br>from AWS, Google, IBM</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">07<span class="stat-unit">+</span></div>
+        <div class="stat-desc">Technology Domains<br>mastered</div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-name">Pattabhi Ramayya Yalla</div>
+      <div class="hero-card-role">// Student · AI Engineer · Builder</div>
+      <div class="hero-card-divider"></div>
+      <div class="hero-card-detail">
+        <div class="hero-card-row"><span>College</span><strong>IIT Kakinada (CC-6K)</strong></div>
+        <div class="hero-card-row"><span>Degree</span><strong>B.Tech CSE</strong></div>
+        <div class="hero-card-row"><span>Year</span><strong>2023 – 2027</strong></div>
+        <div class="hero-card-row"><span>Location</span><strong>Kakinada, AP</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="section-header" id="about">
+  <span class="section-num">01</span>
+  <span class="section-title-bar">ABOUT ME</span>
+  <span class="section-line"></span>
+  <span class="section-tag">Who I Am</span>
+</div>
+<div class="about-wrap">
+  <div class="about-text-col fade-in">
+    <p class="about-big-text">A CS student obsessed with <em>building smarter systems</em> through AI, cloud, and automation.</p>
+    <p class="about-body">
+      Over the past year, I've dived deep into some of the most in-demand technology domains through virtual internships supported by AICTE and EduSkills. From defending networks with Palo Alto Networks to building intelligent automations with SS&C Blue Prism, each experience has shaped how I think about technology and its real-world impact.
+      <br><br>
+      My cross-domain foundation — spanning Cybersecurity, Cloud Computing, Generative AI, Data Engineering, Process Mining, and Intelligent Automation — gives me a unique ability to see how these disciplines connect and amplify each other.
+    </p>
+  </div>
+  <div class="skills-col fade-in">
+    <h3>CORE SKILLS</h3>
+    <div class="skill-row"><span class="skill-name">Generative AI</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div><span class="skill-lvl">Advanced</span></div>
+    <div class="skill-row"><span class="skill-name">Cloud (AWS)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div><span class="skill-lvl">Advanced</span></div>
+    <div class="skill-row"><span class="skill-name">Cybersecurity</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div><span class="skill-lvl">Proficient</span></div>
+    <div class="skill-row"><span class="skill-name">AI Prompting</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div><span class="skill-lvl">Expert</span></div>
+    <div class="skill-row"><span class="skill-name">Machine Learning</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div><span class="skill-lvl">Proficient</span></div>
+    <div class="skill-row"><span class="skill-name">Automation (RPA)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:72%"></div></div><span class="skill-lvl">Proficient</span></div>
+    <div class="skill-row"><span class="skill-name">Process Mining</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div><span class="skill-lvl">Intermediate</span></div>
+  </div>
+</div>
+
+<!-- INTERNSHIPS -->
+<div class="section-header" id="internships">
+  <span class="section-num">02</span>
+  <span class="section-title-bar">EXPERIENCE</span>
+  <span class="section-line"></span>
+  <span class="section-tag">Virtual Internships</span>
+</div>
+<div class="interns-wrap">
+  <div class="intern-row fade-in"><div class="intern-index">01</div><div><div class="intern-company">Palo Alto Networks</div><div class="intern-role">Cybersecurity Internship</div></div><div class="intern-desc">Explored network security, threat intelligence, and modern SOC operations with a global cybersecurity leader.</div><div class="intern-tag">Cybersecurity</div></div>
+  <div class="intern-row fade-in"><div class="intern-index">02</div><div><div class="intern-company">AWS Academy</div><div class="intern-role">Cloud & Data Engineering</div></div><div class="intern-desc">Hands-on experience with AWS services, cloud architecture, and scalable data engineering pipelines.</div><div class="intern-tag">Cloud</div></div>
+  <div class="intern-row fade-in"><div class="intern-index">03</div><div><div class="intern-company">EY & Microsoft</div><div class="intern-role">AI Skills Passport</div></div><div class="intern-desc">Enterprise AI program combining EY consulting expertise with Microsoft's AI ecosystem and tools.</div><div class="intern-tag">AI / ML</div></div>
+  <div class="intern-row fade-in"><div class="intern-index">04</div><div><div class="intern-company">SS&C Blue Prism</div><div class="intern-role">Intelligent Automation</div></div><div class="intern-desc">Learned RPA fundamentals and built intelligent automation workflows for enterprise use cases.</div><div class="intern-tag">Automation</div></div>
+  <div class="intern-row fade-in"><div class="intern-index">05</div><div><div class="intern-company">IBM SkillsBuild</div><div class="intern-role">Generative AI</div></div><div class="intern-desc">Deep dive into GenAI models, prompt engineering, and LLM-powered application development.</div><div class="intern-tag">Gen AI</div></div>
+  <div class="intern-row fade-in"><div class="intern-index">06</div><div><div class="intern-company">Celonis</div><div class="intern-role">Process Mining</div></div><div class="intern-desc">Applied process mining techniques to extract business insights from event log data using Celonis EMS.</div><div class="intern-tag">Process Mining</div></div>
+</div>
+
+<!-- CERTS -->
+<div class="section-header" id="certifications">
+  <span class="section-num">03</span>
+  <span class="section-title-bar">CERTIFICATIONS</span>
+  <span class="section-line"></span>
+  <span class="section-tag">Verified Credentials</span>
+</div>
+<div class="certs-wrap fade-in">
+  <div class="cert-card"><div class="cert-dot"></div><div class="cert-num">01</div><div class="cert-title">Building AI Agents with MongoDB</div><div class="cert-by">MongoDB University</div></div>
+  <div class="cert-card"><div class="cert-dot"></div><div class="cert-num">02</div><div class="cert-title">Machine Learning with Python</div><div class="cert-by">IBM / freeCodeCamp</div></div>
+  <div class="cert-card"><div class="cert-dot"></div><div class="cert-num">03</div><div class="cert-title">Introduction to Generative AI</div><div class="cert-by">Google Cloud</div></div>
+  <div class="cert-card"><div class="cert-dot"></div><div class="cert-num">04</div><div class="cert-title">AWS Academy Cloud Foundations</div><div class="cert-by">Amazon Web Services</div></div>
+  <div class="cert-card"><div class="cert-dot"></div><div class="cert-num">05</div><div class="cert-title">AWS Academy Generative AI Foundations</div><div class="cert-by">Amazon Web Services</div></div>
+</div>
+
+<!-- EDUCATION -->
+<div class="section-header" id="education">
+  <span class="section-num">04</span>
+  <span class="section-title-bar">EDUCATION</span>
+  <span class="section-line"></span>
+  <span class="section-tag">Academic Journey</span>
+</div>
+<div class="edu-wrap fade-in">
+  <div class="edu-card" data-year="2027">
+    <div class="edu-badge">Current</div>
+    <div class="edu-degree">Bachelor of Technology</div>
+    <div class="edu-school">Computer Science & Engineering<br>Ideal Institute of Technology, Kakinada (CC-6K)</div>
+    <div class="edu-years">March 2023 → October 2027</div>
+  </div>
+  <div class="edu-card" data-year="2023">
+    <div class="edu-badge" style="background:var(--green)">Completed</div>
+    <div class="edu-degree">Intermediate MPC</div>
+    <div class="edu-school">Mathematics · Physics · Chemistry<br>Narayana Junior College, India</div>
+    <div class="edu-years">September 2021 → March 2023</div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section-header" id="contact">
+  <span class="section-num">05</span>
+  <span class="section-title-bar">CONTACT</span>
+  <span class="section-line"></span>
+  <span class="section-tag">Get In Touch</span>
+</div>
+<div class="contact-wrap">
+  <div class="contact-left fade-in">
+    <div class="contact-headline">LET'S<br><span>WORK</span><br>TOGETHER</div>
+    <p class="contact-sub">Open to internships, collaborations, research opportunities, and exciting projects in AI, Cloud, and Cybersecurity.</p>
+    <a href="mailto:pattabhiramayya503@gmail.com" class="contact-email-big">pattabhiramayya503@gmail.com</a>
+  </div>
+  <div class="contact-right fade-in">
+    <h3>CONNECT WITH ME</h3>
+    <div>
+      <div class="contact-item"><div class="contact-item-label">Phone</div><div class="contact-item-val">+91 9346189776</div></div>
+      <div class="contact-item"><div class="contact-item-label">Email</div><div class="contact-item-val"><a href="mailto:pattabhiramayya503@gmail.com">pattabhiramayya503@gmail.com</a></div></div>
+      <div class="contact-item"><div class="contact-item-label">LinkedIn</div><div class="contact-item-val"><a href="https://www.linkedin.com/in/pattabhiramayya-yalla-93508537a" target="_blank">pattabhiramayya-yalla ↗</a></div></div>
+      <div class="contact-item"><div class="contact-item-label">Location</div><div class="contact-item-val">Kakinada, Andhra Pradesh, India</div></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-left">PATTABHI RAMAYYA YALLA</div>
+  <div class="footer-right">© 2025 · CS Student · Kakinada, India</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('show'), i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
